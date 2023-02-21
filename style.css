@@ -94,7 +94,7 @@
 .overviewProp {
   height: 6rem;
   min-width: 16rem;
-  width: 100%;
+  /* width: 100%; */
   margin: 0.4rem 1.4rem;
   background-color: #eef3f3;
   display: flex;
@@ -253,4 +253,56 @@
 .sunTimeRelative {
   font-size: 0.8rem;
   font-weight: 400;
+}
+
+@media only screen and (max-width: 425px) {
+  .wrapper {
+    flex-direction: column-reverse;
+    height: 100%;
+  }
+  .left {
+    max-width: 100%;
+    padding: 1.6rem 1.4rem;
+  }
+  .sectionTitle {
+    text-align: center;
+  }
+  .container {
+    max-width: 100%;
+  }
+  .right {
+    max-width: 100%;
+  }
+  .header {
+    flex-direction: column-reverse;
+    row-gap: 25px;
+    align-items: normal;
+  }
+  .searchBar {
+    margin: 0;
+  }
+  .row {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .overviewProp {
+    padding: 1.6rem 1.4rem;
+    /* width: 0; */
+    margin: 0;
+  }
+  .todayOverview {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    row-gap: 10px;
+  }
+  .date{
+    text-align: center;
+  }
+
+ 
+
+
+
+
 }
