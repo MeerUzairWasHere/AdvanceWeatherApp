@@ -40,7 +40,7 @@
                 <div class="propMain">
                   <span class="primaryData">
                     <span class="propValue" id="wind"></span>
-                    <span class="propMetric">mph</span>
+                    <span class="WindPropMetric">mph</span>
                   </span>
                   <span class="secondaryData" id="windDir"></span>
                 </div>
@@ -53,12 +53,9 @@
               <div class="propValueContainer">
                 <div class="propTitle">Lowest / Highest</div>
                 <div class="propMain">
-                  <span class="primaryData">
-                    <span class="propValue" id="lowestToday"></span>
-                    <span class="propMetric">˚F</span>
-                    <span> / </span>
-                    <span class="propValue" id="highestToday"></span>
-                    <span class="propMetric">˚F</span>
+                  <span class="primaryData"><span class="propValue" id="lowestToday"></span> <span
+                      class="propMetric">˚F</span> <span> / </span> <span class="propValue" id="highestToday"></span>
+                    <span class="propMetric propMetricTep">˚F</span>
                   </span>
                 </div>
               </div>
@@ -136,6 +133,12 @@
           <div class="sunTimeRelative" id="sunsetRelative"></div>
         </div>
       </div>
+
+      <div class="checkBox">
+        F<label class="switch">
+          <input id="fcSlider" type="checkbox">
+          <span class="slider"></span>
+        </label>C</div>
     </div>
   </div>
   <script src="script.js"></script>

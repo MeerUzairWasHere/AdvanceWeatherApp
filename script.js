@@ -16,7 +16,6 @@ These are all the functions you'll need to build
         - this will be a helper function only
  */
 
-
 // Get DOM Elements
 // Hint: All required elements have an ID attribute in the HTML file (a total of 17 elements)
 const currentTemperature = document.getElementById("currentTemp");
@@ -36,7 +35,12 @@ const userLocation = document.getElementById("location");
 const time = document.getElementById("time");
 const date = document.getElementById("date");
 const searchInput = document.getElementById("searchInput");
-
+const fcSlider = document.getElementById("fcSlider");
+let currentTemperatureMetric = document.querySelector(
+  ".currentTemperatureMetric"
+);
+const propMetricTep = document.querySelector(".propMetricTep")
+let propMetric = document.querySelector(".propMetric");
 // Create an array of month names
 const monthNames = [
   "January",
@@ -122,8 +126,10 @@ const getDirection = (deg) => {
  * Update each DOM element with the API data
  */
 const updateDom = (data) => {
-  console.log("🔥 updating", data);
+  // console.log("🔥 updating", data);
+
   // Current temperature
+
   currentTemperature.innerText = data[0].main.temp.toFixed(1);
 
   // Weather Icon
@@ -193,6 +199,48 @@ const updateDom = (data) => {
 
   // Call the renderChart function and pass in the list array of the 2nd object in the data array
   renderChart(data[1].list);
+  let clickVal = 0;
+  fcSlider.addEventListener("click", () => {
+    if (clickVal % 2 === 0) {
+      currentTemperature.innerText = (
+        ((Number(data[0].main.temp) - 32) * 5) /
+        9
+      ).toFixed(2);
+      currentTemperatureMetric.innerText = "˚C";
+
+      // Lowest Temperature of the Day
+
+      lowestToday.innerText = (
+        ((Number(data[0].main.temp_min) - 32) * 5) /
+        9
+      ).toFixed(2);
+
+      // Highest Temperature of the Day
+
+      highestToday.innerText = (
+        ((Number(data[0].main.temp_max) - 32) * 5) /
+        9
+      ).toFixed(2);
+
+      propMetric.innerText = "˚C";
+      propMetricTep.innerText = "˚C";
+    } else {
+      currentTemperature.innerText = data[0].main.temp.toFixed(2);
+      currentTemperatureMetric.innerText = "˚F";
+
+      // Lowest Temperature of the Day
+
+      lowestToday.innerText = Number(data[0].main.temp_min).toFixed(2);
+
+      // Highest Temperature of the Day
+
+      highestToday.innerText = Number(data[0].main.temp_max).toFixed(2);
+      propMetric.innerText = "˚F";
+      propMetricTep.innerText = "˚F";
+      
+    }
+    clickVal++;
+  });
 };
 
 // Create a function that renders the chart
